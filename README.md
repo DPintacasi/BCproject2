@@ -18,7 +18,7 @@ https://github.com/mortada/fredapi
 
 ### Required files
 
-requires a file called ```config.py``` within the ETL directory containing API keys. The config.py needs to be of the format: 
+requires a file called ```config.py``` within the ETL directory containing API keys. The config file needs to be of the format: 
 
         census_key = "your census api key"
 
