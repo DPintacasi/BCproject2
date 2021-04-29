@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>US Housing Analysis - Team Vue</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!--Navbar adjustments-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand text-white" href="index.html" >US Housing Analysis</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             Analysis Pages
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="history.html">Historical Analysis</a>
+                            <a class="dropdown-item" href="states.html">State-by-State Breakdown</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!--create container, rows and columns and add image for scope -->
+    <div class="container content">    
+        <div class="row">
+            <div class="col-md-8">
+                <div class="col-md-12">
+                    <h3>Project Scope </h3>
+                    <hr>
+                    <div class="thumbnail">
+                        <img class="img-thumbnail float-left" src="Images/housing_data.jpg " width="50%" alt="temperature">
+                    </div>
+                    <p>The purpose of this project was to analyze the US Housing Market. To accomplish this analysis, we first pulled data from US Census Bureau's API, as well as the Federal Reserve Bank, and Redfin.  </p> 
+                    
+                    <p>After assembling the data in Mongo DB, we used Plotly? to plot various aspects of the current and historical trends affecting the cost of housing in the United States. Factors we looked at included: home ownership vs renting, age, and state of residence. This site provides reference to source data and visualizations created as part of the analysis, as well as explanations and descriptions of any trends and correlations witnessed.</p>
+                </div>
+            </div>
+            <!--team members-->
+            <div class="col-md-4">
+                <div class="col-md-12">
+                    <h3>Visualization Preview</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-3 col-md-6">
+                            <a href="history.html"><img src="Images/Placeholder.jpg" width="100%" alt="Historical Analysis"></a>
+                        </div>
+                        <div class="col-3 col-md-6">
+                            <a href="states.html"><img src="Images/Placeholder.jpg"width="100%"  alt="State-by-State Breakdown"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="col-md-12">
+                    <h3>Team Members</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-3 col-md-6">
+                          <ul>
+                            <li>Aashita Rakesh</li>
+                            <li>Ashley Ross</li>
+                            <li>Danni Pintacasi</li>
+                            <li>Kyle DeLong</li>
+                          </ul>           
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
