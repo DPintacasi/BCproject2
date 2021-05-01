@@ -1,9 +1,10 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import json
-import pymongo
+# import pymongo
 from bson import json_util
 from bson.json_util import dumps
+
 
 app = Flask(__name__)
 
@@ -32,9 +33,7 @@ def states():
 @app.route("/data/lumber")
 def lumber():
     data = mongo.db.lumber_price_index.find()
-    json_projects = []
-    for record in data:
-        json_projects.append(record)
+    json_projects = list(data)
     json_projects = json.dumps(json_projects, default=json_util.default)
     # connection.close()
     return json_projects
