@@ -1,28 +1,44 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
-import scrape_mars
+import json
+import pymongo
+from bson import json_util
+from bson.json_util import dumps
 
 app = Flask(__name__)
 
 # Use flask_pymongo to set up mongo connection
-app.config["MONGO_URI"] = "MONGODB URL HERE"
-mongo = PyMongo(app)
+# conn = 'mongodb://localhost:27017/housing_db'
+# client = pymongo.MongoClient(conn)
+# db = client
 
-# Or set inline
-mongo = PyMongo(app, uri="MONGODB URL HERE")
+# Use flask_pymongo to set up mongo connection
+app.config["MONGO_URI"] = "mongodb://localhost:27017/housing_db"
+mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-
-    return render_template("index.html")
+    data = mongo.db.lumber_price_index.find()
+    return render_template("index.html", data = data)
 
 @app.route("/history")
 def history():
-
+    return render_template("history.html")
 
 @app.route("/states")
 def states():
+    return render_template("states.html")
+
+@app.route("/data/lumber")
+def lumber():
+    data = mongo.db.lumber_price_index.find()
+    json_projects = []
+    for record in data:
+        json_projects.append(record)
+    json_projects = json.dumps(json_projects, default=json_util.default)
+    # connection.close()
+    return json_projects
 
 
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', threaded=True)
