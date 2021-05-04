@@ -35,7 +35,6 @@ def lumber():
     data = mongo.db.lumber_price_index.find()
     json_projects = list(data)
     json_projects = json.dumps(json_projects, default=json_util.default)
-    # connection.close()
     return json_projects
 
 
