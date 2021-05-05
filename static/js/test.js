@@ -1,3 +1,3 @@
-d3.json("/data/lumber").then(function(data){
+d3.json("/data/census").then(function(data){
     console.log(data);
 });

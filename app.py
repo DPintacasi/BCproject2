@@ -30,14 +30,19 @@ def history():
 def states():
     return render_template("states.html")
 
-@app.route("/data/lumber")
-def lumber():
-    data = mongo.db.lumber_price_index.find()
-    json_projects = list(data)
-    json_projects = json.dumps(json_projects, default=json_util.default)
-    # connection.close()
-    return json_projects
+@app.route("/data/census")
+def census():
+    data = mongo.db.census_housing_age	.find()
+    json_data = list(data)
+    json_data = json.dumps(json_data, default=json_util.default)
+    return json_data
 
+@app.route("/data/fred")
+def fred():
+    data = mongo.db.fred.find()
+    json_data = list(data)
+    json_data = json.dumps(json_data, default=json_util.default)
+    return json_data
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', threaded=True)
