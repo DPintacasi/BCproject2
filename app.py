@@ -37,6 +37,12 @@ def lumber():
     json_projects = json.dumps(json_projects, default=json_util.default)
     return json_projects
 
+@app.route("/data/fred")
+def fred():
+    data = mongo.db.fred.find()
+    json_data = list(data)
+    json_data = json.dumps(json_data, default=json_util.default)
+    return json_data
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', threaded=True)
