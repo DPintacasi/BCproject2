@@ -17,41 +17,67 @@ var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{
 // Grab data with d3
 d3.json("/data/map").then(function(data) {
   console.log(data);
-  geojson = L.choropleth(data {
+  geojson = L.choropleth(data, {
 
     // Define what property in features to use
     valueProperty: "median_house_price", 
 
-<<<<<<< HEAD
     // Set colors
-    colors: ['#f3e79b', '#e0d09e', '#ccbaa1', '#b8a4a3', '#a38fa4', '#8e7aa5', '#7666a5', '#5c53a5']
+    colors: ['#f3e79b', '#e0d09e', '#ccbaa1', '#b8a4a3', 
+      '#a38fa4', '#8e7aa5', '#7666a5', '#5c53a5'],
 
     // # of breaks in step range
     steps: 8,
 
+    // q for quartile, e for equidistant, k for k-means
+    mode: "e",
+    style: {
+      weight: 1,
+      opacity: 1,
+      color: 'white',
+      fillOpacity: 0.8,
+    }, // ends style 
 
-  }).addTo(myMap);
+    // Bind a pop-up to each layer
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup("<h3>" + feature.properties.state + "</h3><hr><p>" + 
+      "Median Sale Price: $" + feature.property.median_sale_price + "</p><br><p>" + 
+      "Median Price/Square Foot: $" + feature.properties.median_sale_ppsf + "</p><br><p>" +
+      "Total Inventory" + feature.properties.inventory + "</p>");
+    } // Ends pop-up binding of data 
+  }).addTo(myMap); // ends geojson layer
+
+  // Create legend
+  var legend = L.control({ position: "bottomright" });
+  legend.onAdd = function() {
+    var div = L.DomUtil.create("div", "info legend");
+    var limits = geojson.options.limits;
+    var colors = geojson.options.colors;
+    var labels = [];
+
+    // add in min & max
+    var legendInfo = "<h1>Median Home Sale Price</h1>" + 
+    "<div class=\"labels\">" +
+    "<div class=\"min\">" + limits[0] + "</div>" +
+    "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
+  "</div>";
+
+    div.innerHTML = legendInfo;
+
+    limits.forEach(function(limit, index) {
+      labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
+    });
+
+    div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+    return div;
+  }; // ends legend
+
+  // adds legend to map
+  legend.addTo(myMap);
   
-=======
-// Grab data with d3
-d3.json("/data/map").then(function(data) {
-  console.log(date)
-  // geojson = L.choropleth(data).addTo(myMap);
-  // console.log(geojson.options.limits);
->>>>>>> main
 }); // ends GET request
 
 
-
-  // Bind a pop-up to each layer
-    onEachFeature: function(feature, layer) {
-      layer.bindPopup("<h3>" + state + "</h3><hr><p>" + feature.property.inventory "</p><br><p>" + 
-      "$" + feature.property.median_sale_price + "</p><br><p>"
-      "$" + feature.property.median_sale_ppsf + "</p>");
-    } // Ends pop-up binding of data 
-//   }); // ends choropleth layer
-
-// }); // ends D3 data grab
 
 // // getColor function depending on mean house price value
 // function getColor(i) {
@@ -64,15 +90,5 @@ d3.json("/data/map").then(function(data) {
 //          i > # ? '#e0d09e' :
 //                 '#f3e79b';
 // } // ends getColor function
-
-function style(feature) {
-  return {
-    weight: 1,
-    opacity: 1,
-    color: 'black',
-    fillOpacity: 0.8,
-    fillColor: getColor(feature.properties.inventory)
-  }
-}
 
 
