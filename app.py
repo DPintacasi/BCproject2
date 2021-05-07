@@ -22,9 +22,10 @@ def history():
 def states():
     return render_template("states.html")
 
+
 @app.route("/data/census")
 def census():
-    data = mongo.db.census_housing_demo.find()
+    data = mongo.db.census_housing_age.find()
     json_data = list(data)
     json_data = json.dumps(json_data, default=json_util.default)
     return json_data
