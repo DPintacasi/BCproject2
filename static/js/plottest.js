@@ -26,16 +26,16 @@ d3.json("/data/redfin").then(function(data){
 
 // Trace1 for the homeownership data
 var trace1 = {
-    x: redfindata.map(row => row.total_homes_sold),
-    y: redfindata.map(row => row.year),
+    x: redfindata.map(row => row.data.total_homes_sold),
+    y: redfindata.map(row => row.data.year),
     name: "Homweownership Rate",
     type: "bar"
   };
   
   // Trace 2 for the median Data
   var trace2 = {
-    x: redfindata.map(row => row.median_house_price),
-    y: redfindata.map(row => row.year),
+    x: redfindata.map(row => row.data.median_house_price),
+    y: redfindata.map(row => row.data.year),
     // text: redfindata.map(row => row.romanName),
     name: "Median House Price",
     type: "scatter"
