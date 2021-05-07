@@ -22,6 +22,7 @@ def history():
 def states():
     return render_template("states.html")
 
+
 @app.route("/data/census")
 def census():
     data = mongo.db.census_housing_age.find()
@@ -35,6 +36,7 @@ def fred():
     json_data = list(data)
     json_data = json.dumps(json_data, default=json_util.default)
     return json_data
+
 
 @app.route("/housing-summary")
 def redfin_data():
@@ -55,6 +57,17 @@ def redfin_data():
 
     # Return a jsonified list of dictionaries
     return jsonify(redfin_list)
+
+@app.route("/data/redfin")
+def redfin():
+    data = mongo.db.redfinclean.find()
+    json_data = list(data)
+    json_data = json.dumps(json_data, default=json_util.default)
+    return json_data
+
+@app.route("/redfinAR")
+def redfinAR():
+    return render_template("redfinAR.html")
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', threaded=True)
