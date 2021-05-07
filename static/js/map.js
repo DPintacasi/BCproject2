@@ -13,31 +13,39 @@ var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{
     accessToken: API_KEY
 }).addTo(myMap); // ends lightmap
 
-// create variable to fetch state boundary data
-// var states = "static/data/leaflet_states.geojson";
-
-// create variable to fetch county boundary data
-var counties = "static/data/us_counties.geojson"; 
-
-var geojson;
 
 // Grab data with d3
-d3.json(counties).then(function(data) {
-  geojson = L.choropleth(data).addTo(myMap);
-  console.log(geojson.options.limits);
+d3.json("/data/map").then(function(data) {
+  console.log(data);
+  geojson = L.choropleth(data {
+
+    // Define what property in features to use
+    valueProperty: "median_house_price", 
+
+    // Set colors
+    colors: ['#f3e79b', '#e0d09e', '#ccbaa1', '#b8a4a3', '#a38fa4', '#8e7aa5', '#7666a5', '#5c53a5']
+
+    // # of breaks in step range
+    steps: 8,
+
+
+  }).addTo(myMap);
+  
 }); // ends GET request
 
 
 
-//     // Bind a pop-up to each layer
-//     onEachFeature: function(feature, layer) {
-//       layer.bindPopup("<h3>" + state + "</h3><hr><p>" + inventory "</p><br><p>" + median_sale_price + "</p>");
-//     } 
+  // Bind a pop-up to each layer
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup("<h3>" + state + "</h3><hr><p>" + feature.property.inventory "</p><br><p>" + 
+      "$" + feature.property.median_sale_price + "</p><br><p>"
+      "$" + feature.property.median_sale_ppsf + "</p>");
+    } // Ends pop-up binding of data 
 //   }); // ends choropleth layer
 
 // }); // ends D3 data grab
 
-// // getColor function depending on inventory value
+// // getColor function depending on mean house price value
 // function getColor(i) {
 //   return i > # ? '#5c53a5' :
 //          i > # ? '#7666a5' :
