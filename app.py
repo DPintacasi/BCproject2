@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask,jsonify,render_template, redirect
 from flask_pymongo import PyMongo
 import json
 from bson import json_util
@@ -35,6 +35,26 @@ def fred():
     json_data = list(data)
     json_data = json.dumps(json_data, default=json_util.default)
     return json_data
+
+@app.route("/housing-summary")
+def redfin_data():
+    
+    # Declare the collection
+    collection = mongo.db.housing_summary
+
+    # Create an empty list to store data
+    redfin_list=[]
+
+    # Get all results
+    results = collection.find({}, {"_id": 0})
+
+    # for loop to loop through each item in the database
+    for x in results:
+        # store each item (dict) in the list
+        redfin_list.append(x)
+
+    # Return a jsonified list of dictionaries
+    return jsonify(redfin_list)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', threaded=True)
