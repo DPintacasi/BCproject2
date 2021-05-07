@@ -65,6 +65,27 @@ def redfin_data():
     # Return a jsonified list of dictionaries
     return jsonify(redfin_list)
 
+@app.route("/ny-map")
+def ny_map():
+    
+    # Declare the collection
+    collection = mongo.db.ny_choropleth
+
+    # Create an empty list to store data
+    ny_list=[]
+
+    # Get all results
+    results = collection.find({}, {"_id": 0})
+
+    # for loop to loop through each item in the database
+    for x in results:
+        # store each item (dict) in the list
+        ny_list.append(x)
+
+    # Return a jsonified list of dictionaries
+    return jsonify(ny_list)
+
+
 @app.route("/data/redfin")
 def redfin():
     data = mongo.db.redfinclean.find()
