@@ -1,17 +1,10 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import json
-# import pymongo
 from bson import json_util
 from bson.json_util import dumps
 
-
 app = Flask(__name__)
-
-# Use flask_pymongo to set up mongo connection
-# conn = 'mongodb://localhost:27017/housing_db'
-# client = pymongo.MongoClient(conn)
-# db = client
 
 # Use flask_pymongo to set up mongo connection
 app.config["MONGO_URI"] = "mongodb://localhost:27017/housing_db"
@@ -19,8 +12,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    data = mongo.db.lumber_price_index.find()
-    return render_template("index.html", data = data)
+    return render_template("index.html")
 
 @app.route("/history")
 def history():
@@ -30,9 +22,10 @@ def history():
 def states():
     return render_template("states.html")
 
+
 @app.route("/data/census")
 def census():
-    data = mongo.db.census_housing_age	.find()
+    data = mongo.db.census_housing_age.find()
     json_data = list(data)
     json_data = json.dumps(json_data, default=json_util.default)
     return json_data
@@ -43,6 +36,17 @@ def fred():
     json_data = list(data)
     json_data = json.dumps(json_data, default=json_util.default)
     return json_data
+
+@app.route("/data/redfin")
+def redfin():
+    data = mongo.db.redfinclean.find()
+    json_data = list(data)
+    json_data = json.dumps(json_data, default=json_util.default)
+    return json_data
+
+@app.route("/redfinAR")
+def redfinAR():
+    return render_template("redfinAR.html")
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', threaded=True)

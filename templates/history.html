@@ -19,7 +19,7 @@
   <script src="https://d3js.org/d3.v6.min.js"></script>
   
   <!--Our CSS-->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
@@ -53,8 +53,10 @@
                 <div class="col-md-12">
                     <h3>Visualizations</h3>
                     <hr>
-                
                     <br>
+                    <div id = "census_age"></div>
+                    <div id = "census_race"></div>
+                    <div id = "fred_prices_trend"></div>
                 </div>
             </div>
 <!--analysis (in words) part of the page-->            
@@ -64,14 +66,15 @@
                     <hr>
                     <div class="row">
                         <div class="col-3 col-md-6">
-               
+                          
                         </div>
                     </div>
                 </div>
             </div>            
         </div>    
     </div>
-
+    <!-- d3  -->
+    <script src="{{ url_for('static', filename='js/d3.min.js') }}"></script>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
@@ -85,6 +88,9 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <!-- Our JavaScript -->
+    <script type="text/javascript" src="static/js/choropleth.js"></script>
+    <script type="text/javascript" src="static/js/census.js"></script>
+    <script type="text/javascript" src="static/js/fred_price.js"></script>
     
 </body>
 </html>
