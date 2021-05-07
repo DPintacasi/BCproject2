@@ -24,7 +24,7 @@ def states():
 
 @app.route("/data/census")
 def census():
-    data = mongo.db.census_housing_age.find()
+    data = mongo.db.census_housing_demo.find()
     json_data = list(data)
     json_data = json.dumps(json_data, default=json_util.default)
     return json_data
