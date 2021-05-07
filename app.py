@@ -36,5 +36,16 @@ def fred():
     json_data = json.dumps(json_data, default=json_util.default)
     return json_data
 
+@app.route("/data/redfin")
+def redfin():
+    data = mongo.db.redfinclean.find()
+    json_data = list(data)
+    json_data = json.dumps(json_data, default=json_util.default)
+    return json_data
+
+@app.route("/redfinAR")
+def redfinAR():
+    return render_template("redfinAR.html")
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', threaded=True)
