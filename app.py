@@ -37,6 +37,13 @@ def fred():
     json_data = json.dumps(json_data, default=json_util.default)
     return json_data
 
+@app.route("/data/map")
+def map():
+    data = mongo.db.redfinmap.find()
+    json_data = list(data)
+    json_data = json.dumps(json_data, default=json_util.default)
+    return json_data
+
 
 @app.route("/housing-summary")
 def redfin_data():

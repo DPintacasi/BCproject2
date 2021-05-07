@@ -22,9 +22,10 @@ var counties = "static/data/us_counties.geojson";
 var geojson;
 
 // Grab data with d3
-d3.json(counties).then(function(data) {
-  geojson = L.choropleth(data).addTo(myMap);
-  console.log(geojson.options.limits);
+d3.json("/data/map").then(function(data) {
+  console.log(date)
+  // geojson = L.choropleth(data).addTo(myMap);
+  // console.log(geojson.options.limits);
 }); // ends GET request
 
 
