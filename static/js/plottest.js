@@ -26,9 +26,9 @@ d3.json("/data/redfin").then(function(data){
 
 // Trace1 for the homeownership data
 var trace1 = {
-    x: redfindata.map(row => row.data.total_homes_sold),
-    y: redfindata.map(row => row.data.year),
-    name: "Homweownership Rate",
+    x: redfindata.map(row => row.total_homes_sold),
+    y: redfindata.map(row => row.year),
+    name: "Total Homes Sold",
     type: "bar"
   };
   
