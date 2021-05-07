@@ -7,10 +7,11 @@ d3.json("/data/redfin").then(function(data){
 
   var total_homes_sold = redfindata.total_homes_sold;
   var year = redfindata.year;
-  var startDate = data.dataset.start_date;
-  var endDate = data.dataset.end_date;
-  var dates = unpack(data.dataset.data, 0);
-  var closingPrices = unpack(data.dataset.data, 4);
+  var year = redfindata.median_house_price;
+  // var startDate = data.dataset.start_date;
+  // var endDate = data.dataset.end_date;
+  // var dates = unpack(data.dataset.data, 0);
+  // var closingPrices = unpack(data.dataset.data, 4);
 
 // Trace1 for the homeownership data
 var trace1 = {
