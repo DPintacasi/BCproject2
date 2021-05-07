@@ -22,6 +22,7 @@ d3.json("/data/map").then(function(data) {
     // Define what property in features to use
     valueProperty: "median_house_price", 
 
+<<<<<<< HEAD
     // Set colors
     colors: ['#f3e79b', '#e0d09e', '#ccbaa1', '#b8a4a3', '#a38fa4', '#8e7aa5', '#7666a5', '#5c53a5']
 
@@ -31,6 +32,13 @@ d3.json("/data/map").then(function(data) {
 
   }).addTo(myMap);
   
+=======
+// Grab data with d3
+d3.json("/data/map").then(function(data) {
+  console.log(date)
+  // geojson = L.choropleth(data).addTo(myMap);
+  // console.log(geojson.options.limits);
+>>>>>>> main
 }); // ends GET request
 
 
