@@ -42,26 +42,28 @@ var chosenYAxis = "inventory";
 // // // function used for updating x-scale var upon click on axis label
 function xScale(housingData, chosenXAxis) {
     // create scales
-    var xLinearScale = d3.scaleLinear()
+    // var xLogScale = d3.scaleLinear()
+      var xLogScale = d3.scaleLog()
        .domain([d3.min(housingData, d => d[chosenXAxis]),
         d3.max(housingData, d => d[chosenXAxis]) 
       ])
       .range([0, width]);
   
-    return xLinearScale;
+    return xLogScale;
   
   }
 
   // function used for updating y-scale var upon click on axis label
   function yScale(housingData, chosenYAxis) {
     // create scales
-    var yLinearScale = d3.scaleLinear()
+    // var yLogScale = d3.scaleLinear()
+    var yLogScale = d3.scaleLog()
       .domain([d3.min(housingData, d => d[chosenYAxis]),
         d3.max(housingData, d => d[chosenYAxis])
       ])
       .range([height, 0]);
   
-    return yLinearScale;
+    return yLogScale;
   
   }
 
@@ -154,15 +156,15 @@ function xScale(housingData, chosenXAxis) {
       data.median_days_on_market = +data.median_days_on_market;
     });
     
-    // xLinearScale function 
-    var xLinearScale = xScale(housingData, chosenXAxis);
+    // xLogScale function 
+    var xLogScale = xScale(housingData, chosenXAxis);
   
-    // yLinearScale function 
-    var yLinearScale = yScale(housingData, chosenYAxis);
+    // yLogScale function 
+    var yLogScale = yScale(housingData, chosenYAxis);
 
     // Create initial axis functions
-    var bottomAxis = d3.axisBottom(xLinearScale);
-    var leftAxis = d3.axisLeft(yLinearScale);
+    var bottomAxis = d3.axisBottom(xLogScale);
+    var leftAxis = d3.axisLeft(yLogScale);
 
     // append x axis
     var xAxis = chartGroup.append("g")
@@ -181,10 +183,10 @@ function xScale(housingData, chosenXAxis) {
        .data(housingData)
        .enter()
        .append("circle")
-       .attr("cx", d => xLinearScale(d[chosenXAxis]))
-       .attr("cy", d => yLinearScale(d[chosenYAxis]))
+       .attr("cx", d => xLogScale(d[chosenXAxis]))
+       .attr("cy", d => yLogScale(d[chosenYAxis]))
        .attr("r", "15")
-       .attr("fill", "rgba(198, 45, 205, 0.8)")
+       .attr("fill", "rgba(128, 14, 156, 1)")
       //  .attr("class", "region_nameCircle")
       .attr("opacity", ".5");
 
@@ -195,8 +197,8 @@ function xScale(housingData, chosenXAxis) {
        .enter()
        .append("text")
       //  .text(d => d.state)
-       .attr("x", d => xLinearScale(d[chosenXAxis]))
-       .attr("y", d => yLinearScale(d[chosenYAxis]))
+       .attr("x", d => xLogScale(d[chosenXAxis]))
+       .attr("y", d => yLogScale(d[chosenYAxis]))
        .attr("class", "region_nameText")
 
       
@@ -223,7 +225,7 @@ function xScale(housingData, chosenXAxis) {
 
     // Create group for y-axis labels
      var ylabelsGroup = chartGroup.append("g")
-         .attr("transform", `translate(${0-margin.left/4},${height/2})`);
+         .attr("transform", `translate(${0-margin.left/2},${height/2})`);
 
     var inventoryLabel = ylabelsGroup.append("text")
        .attr("x", 0)
@@ -261,18 +263,18 @@ function xScale(housingData, chosenXAxis) {
 
         // functions here found above csv import
         // updates x scale for new data
-        xLinearScale = xScale(housingData, chosenXAxis);
+        xLogScale = xScale(housingData, chosenXAxis);
         // updates y scale for new data
-        yLinearScale = yScale(housingData, chosenYAxis);
+        yLogScale = yScale(housingData, chosenYAxis);
 
     //     // updates x axis with transition
-        xAxis = renderXAxes(xLinearScale, xAxis);
+        xAxis = renderXAxes(xLogScale, xAxis);
 
     //     // updates circles with new values
-        circlesGroup = renderCircles(circlesGroup, xLinearScale,yLinearScale, chosenXAxis,chosenYAxis);
+        circlesGroup = renderCircles(circlesGroup, xLogScale,yLogScale, chosenXAxis,chosenYAxis);
 
     //     // updates texts with new values
-        textGroup = renderText(textGroup, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
+        textGroup = renderText(textGroup, xLogScale, yLogScale, chosenXAxis, chosenYAxis);
 
     //      // updates tooltips with new info
          circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
@@ -310,18 +312,18 @@ function xScale(housingData, chosenXAxis) {
 
         // functions here found above csv import
         // updates x scale for new data
-        xLinearScale = xScale(housingData, chosenXAxis);
+        xLogScale = xScale(housingData, chosenXAxis);
         // updates y scale for new data
-         yLinearScale = yScale(housingData, chosenYAxis);
+         yLogScale = yScale(housingData, chosenYAxis);
 
         // updates y axis with transition
-        yAxis = renderYAxes(yLinearScale, yAxis);
+        yAxis = renderYAxes(yLogScale, yAxis);
 
         // updates circles with new values
-        circlesGroup = renderCircles(circlesGroup, xLinearScale,yLinearScale, chosenXAxis,chosenYAxis);
+        circlesGroup = renderCircles(circlesGroup, xLogScale,yLogScale, chosenXAxis,chosenYAxis);
 
         // updates texts with new values
-        textGroup = renderText(textGroup, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
+        textGroup = renderText(textGroup, xLogScale, yLogScale, chosenXAxis, chosenYAxis);
 
          // updates tooltips with new info
         circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
