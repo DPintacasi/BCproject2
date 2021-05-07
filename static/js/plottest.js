@@ -24,9 +24,12 @@ d3.json("/data/redfin").then(function(data){
   //     });
   
 
+var total_homes_info = unpack(redfindata.data, 2);
+var median_price_info = unpack(redfindata.data, 3);
+
 // Trace1 for the homeownership data
 var trace1 = {
-    x: redfindata.map(row => row.total_homes_sold),
+    x: total_homes_info,
     y: redfindata.map(row => row.year),
     name: "Total Homes Sold",
     type: "bar"
@@ -34,7 +37,7 @@ var trace1 = {
   
   // Trace 2 for the median Data
   var trace2 = {
-    x: redfindata.map(row => row.data.median_house_price),
+    x: median_price_info,
     y: redfindata.map(row => row.data.year),
     // text: redfindata.map(row => row.romanName),
     name: "Median House Price",
