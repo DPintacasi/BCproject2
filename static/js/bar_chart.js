@@ -5,15 +5,15 @@ d3.json("/data/redfin").then(function(data){
     console.log(redfindata)
   
 
-years = redfindata.years  
-totalhomessold = redfindata.data['US'].total_homes_sold,
-mediansaleprice = redfindata.data['US'].median_sale_price
-console.log(years)
-console.log(totalhomessold)
-console.log(mediansaleprice)
+  years = redfindata.years  
+  totalhomessold = redfindata.data['US'].total_homes_sold,
+  mediansaleprice = redfindata.data['US'].median_sale_price
+  console.log(years)
+  console.log(totalhomessold)
+  console.log(mediansaleprice)
 
-// Trace1 for the total homes sold
-var trace1 = {
+  // Trace1 for the total homes sold
+  var trace1 = {
     x: years,
     y: totalhomessold ,
     name: "Total Homes Sold",
