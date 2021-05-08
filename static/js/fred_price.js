@@ -32,6 +32,8 @@ d3.json("/data/fred").then(function(data){
     var layout = { 
         title: "Homeownership Rate vs Median House Price vs Lumber Price Index",
         colorway : ['#f3cec9', '#a262a9', '#6f4d96'],
+        width: 800,
+        // xaxis: {domain: [0.2, 0.8]},
         yaxis: {
             title: trace_lumber.name,
             titlefont: {color: '#f3cec9'},
@@ -44,7 +46,7 @@ d3.json("/data/fred").then(function(data){
             anchor: 'free',
             overlaying: 'y',
             side: 'left',
-            position: 0.15
+            position: 0.1
           },
           yaxis3: {
             title: trace_homeown.name,
