@@ -44,3 +44,6 @@ https://eric.clst.org/tech/usgeojson/
 * State geojson:
 https://leafletjs.com/examples/choropleth/us-states.js
 
+* NewYork Counties geojson:
+https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/new-york-counties.geojson
+
