@@ -5,12 +5,35 @@ d3.json("/data/census").then(function(data){
     const ageDataset = data[0];
     const raceDataset = data[1];
 
+
+    var dropdown = d3.select("#selDataset");
+
+    var names = ageDataset.geographies;
+
+    names.forEach(function(name){
+        var option = dropdown.append("option");
+        option.text(name);
+    });
+
+    buildAgeTree("United States")
+    buildRaceTree("United States")
+
+    // buildAgeTree()
+    // buildRaceTree()
+
+    dropdown.on("change", function(){
+        var ID = dropdown.property("value");
+        console.log(ID)
+        buildAgeTree(ID)
+        buildRaceTree(ID)
+    });
+
     // *****************
     // tree map building functions
     // *****************
-    function buildAgeTree(){
+    function buildAgeTree(selection){
 
-        var dataSelection = ageDataset.data["United States"];
+        var dataSelection = ageDataset.data[selection];
 
         var labels = [ 
             "<35 year old owners", 
@@ -54,22 +77,28 @@ d3.json("/data/census").then(function(data){
             labels: labels,
             parents: parents,
             values:  dataSelection,
-            textinfo: "label+value+percent parent+percent entry",
-            // domain: {"x": [0, 0.48]},
+            textinfo: "label+value+percent parent+percent entry text",
             outsidetextfont: {"size": 20, "color": "#377eb8"},
-            marker: {"line": {"width": 2}},
+            marker: {"line": {"width": 2},
+                    colors: ['#d2fbd4','#a5dbc2','#7bbcb0','#559c9e','#3a7c89','#235d72','#123f5a','#d2fbd4','#a5dbc2','#7bbcb0','#559c9e','#3a7c89','#235d72','#123f5a',
+                    "#3b738f","#2a5674"]},
             pathbar: {"visible": false}
             }];
+
+            // '#d2fbd4','#a5dbc2','#7bbcb0','#559c9e','#3a7c89','#235d72','#123f5a','#d2fbd4','#a5dbc2','#7bbcb0','#559c9e','#3a7c89','#235d72','#123f5a',
         
         var layout = {
+            title: "Homeowners vs Renters - by Age"
         };
 
         Plotly.newPlot('census_age', data, layout);
+
+
     };
             
-    function buildRaceTree(){
+    function buildRaceTree(selection){
 
-        var dataSelection = raceDataset.data["United States"]
+        var dataSelection = raceDataset.data[selection]
         var labels = raceDataset.labels
         var ow = labels[16]
         var re = labels[17]
@@ -81,32 +110,20 @@ d3.json("/data/census").then(function(data){
             labels: labels,
             parents: parents,
             values:  dataSelection,
-            textinfo: "label+value+percent parent+percent entry",
-            // domain: {"x": [0, 0.48]},
+            textinfo: "label+value+percent parent+percent entry text",
             outsidetextfont: {"size": 20, "color": "#377eb8"},
-            marker: {"line": {"width": 2}},
+            marker: {"line": {"width": 2},
+            colors: ['#d2fbd4','#a5dbc2','#7bbcb0','#559c9e','#3a7c89','#235d72','#0d585f','#123f5a','#d2fbd4','#a5dbc2','#7bbcb0','#559c9e','#3a7c89','#235d72','#0d585f','#123f5a',
+            "#3b738f","#2a5674"]},
             pathbar: {"visible": false}
             }];
         
         var layout = {
+            title: "Homeowners vs Renters - by Race"
         };
 
         Plotly.newPlot('census_race', data, layout);
 
 
-
-
-
-
     }
-
-    buildAgeTree()
-    buildRaceTree()
-            
-            
-
-
-
-    
-
 });
