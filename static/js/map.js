@@ -14,9 +14,13 @@ var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{
 }).addTo(myMap); // ends lightmap
 
 
-// Grab data with d3
-d3.json("/data/map").then(function(data) {
+// // Grab data with d3
+d3.json("/data/map").then(function(data, err) {
+  if (err) throw err;
   console.log(data);
+    // L.geojson(data).addTo(myMap);
+    // geojson = L.choropleth(data).addTo(myMap);
+  // CHOROPLETH
   geojson = L.choropleth(data, {
 
     // Define what property in features to use
@@ -30,7 +34,7 @@ d3.json("/data/map").then(function(data) {
     steps: 8,
 
     // q for quartile, e for equidistant, k for k-means
-    mode: "e",
+    mode: "q",
     style: {
       weight: 1,
       opacity: 1,
@@ -81,13 +85,13 @@ d3.json("/data/map").then(function(data) {
 
 // // getColor function depending on mean house price value
 // function getColor(i) {
-//   return i > # ? '#5c53a5' :
-//          i > # ? '#7666a5' :
-//          i > # ? '#8e7aa5' :
-//          i > # ? '#a38fa4' :
-//          i > # ? '#b8a4a3' :
-//          i > # ? '#ccbaa1' :
-//          i > # ? '#e0d09e' :
+//   return i > 100000 ? '#5c53a5' :
+//          i > 200000 ? '#7666a5' :
+//          i > 300000 ? '#8e7aa5' :
+//          i > 400000 ? '#a38fa4' :
+//          i > 500000 ? '#b8a4a3' :
+//          i > 600000 ? '#ccbaa1' :
+//          i > 700000 ? '#e0d09e' :
 //                 '#f3e79b';
 // } // ends getColor function
 
