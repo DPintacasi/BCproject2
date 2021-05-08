@@ -1,7 +1,7 @@
 // Creating map object
 var myMap = L.map("map", {
-  center: [40.7128, -74.0060],
-  zoom: 8
+  center: [41.2, -76.2],
+  zoom: 6
 });
 
 // Adding tile layer
@@ -82,8 +82,3 @@ d3.json("/data/nymap").then(function(geoData, err) {
 
 });
 
-
-// d3.json("https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/new-york-counties.geojson").then(function(data){
-//   geojson = L.choropleth(data,
-//     ).addTo(myMap);
-// });
