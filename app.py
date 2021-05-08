@@ -22,7 +22,6 @@ def history():
 def states():
     return render_template("states.html")
 
-
 @app.route("/data/census")
 def census():
     data = mongo.db.census_housing_demo.find()
@@ -46,43 +45,25 @@ def map():
 
 
 @app.route("/housing-summary")
-def redfin_data():
-    
-    # Declare the collection
+def redfin_data(): 
     collection = mongo.db.housing_summary
-
-    # Create an empty list to store data
     redfin_list=[]
-
-    # Get all results
     results = collection.find({}, {"_id": 0})
-
-    # for loop to loop through each item in the database
     for x in results:
-        # store each item (dict) in the list
         redfin_list.append(x)
-
-    # Return a jsonified list of dictionaries
     return jsonify(redfin_list)
 
-@app.route("/ny-map")
-def ny_map():
-    
-    # Declare the collection
+@app.route("/nymap")
+def nymap():
+    return render_template("ny_map.html")
+
+@app.route("/data/nymap")
+def ny_map_data():   
     collection = mongo.db.ny_choropleth
-
-    # Create an empty list to store data
     ny_list=[]
-
-    # Get all results
     results = collection.find({}, {"_id": 0})
-
-    # for loop to loop through each item in the database
     for x in results:
-        # store each item (dict) in the list
         ny_list.append(x)
-
-    # Return a jsonified list of dictionaries
     return jsonify(ny_list)
 
 
