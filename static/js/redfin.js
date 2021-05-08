@@ -144,7 +144,7 @@ function xScale(housingData, chosenXAxis) {
   }
   
  //read in json data
-  d3.json("/housing-summary").then(function(housingData, err) {
+  d3.json("/data/housing").then(function(housingData, err) {
      if (err) throw err;
      console.log(housingData)
   
@@ -347,7 +347,8 @@ function xScale(housingData, chosenXAxis) {
           }
     }
     });
-  }).catch(function(error) {
+  })
+  .catch(function(error) {
     console.log(error);
   });
 }
