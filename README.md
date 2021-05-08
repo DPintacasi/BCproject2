@@ -18,6 +18,8 @@ https://github.com/mortada/fredapi
 
 * json
 
+* geojson
+
 * datetime
 
 
