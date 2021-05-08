@@ -14,6 +14,12 @@ https://github.com/mortada/fredapi
 
 * pymongo
 
+* requests
+
+* json
+
+* datetime
+
 
 
 ### Required files
