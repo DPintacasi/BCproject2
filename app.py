@@ -14,13 +14,17 @@ mongo = PyMongo(app)
 def index():
     return render_template("index.html")
 
-@app.route("/history")
-def history():
-    return render_template("history.html")
-
 @app.route("/states")
 def states():
     return render_template("states.html")
+
+@app.route("/national")
+def national():
+    return render_template("national.html")
+
+@app.route("/newyork")
+def newyork():
+    return render_template("newyork.html")
 
 @app.route("/data/census")
 def census():
@@ -43,8 +47,7 @@ def map():
     json_data = json.dumps(json_data, default=json_util.default)
     return json_data
 
-
-@app.route("/housing-summary")
+@app.route("/data/housing-summary")
 def redfin_data(): 
     collection = mongo.db.housing_summary
     redfin_list=[]
@@ -52,10 +55,6 @@ def redfin_data():
     for x in results:
         redfin_list.append(x)
     return jsonify(redfin_list)
-
-@app.route("/nymap")
-def nymap():
-    return render_template("ny_map.html")
 
 @app.route("/data/nymap")
 def ny_map_data():   
@@ -66,17 +65,12 @@ def ny_map_data():
         ny_list.append(x)
     return jsonify(ny_list)
 
-
 @app.route("/data/redfin")
 def redfin():
     data = mongo.db.redfinclean.find()
     json_data = list(data)
     json_data = json.dumps(json_data, default=json_util.default)
     return json_data
-
-@app.route("/redfinAR")
-def redfinAR():
-    return render_template("redfinAR.html")
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', threaded=True)
