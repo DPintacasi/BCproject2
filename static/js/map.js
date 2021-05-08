@@ -18,13 +18,13 @@ var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{
 d3.json("/data/map").then(function(data, err) {
   if (err) throw err;
   console.log(data);
-    // L.geojson(data).addTo(myMap);
-    // geojson = L.choropleth(data).addTo(myMap);
+
+  // geojson = L.choropleth(data[0]).addTo(myMap);
   // CHOROPLETH
-  geojson = L.choropleth(data, {
+  geojson = L.choropleth(data[0], {
 
     // Define what property in features to use
-    valueProperty: "median_house_price", 
+    valueProperty: "median_sale_price", 
 
     // Set colors
     colors: ['#f3e79b', '#e0d09e', '#ccbaa1', '#b8a4a3', 
@@ -45,7 +45,7 @@ d3.json("/data/map").then(function(data, err) {
     // Bind a pop-up to each layer
     onEachFeature: function(feature, layer) {
       layer.bindPopup("<h3>" + feature.properties.state + "</h3><hr><p>" + 
-      "Median Sale Price: $" + feature.property.median_sale_price + "</p><br><p>" + 
+      "Median Sale Price: $" + feature.properties.median_sale_price + "</p><br><p>" + 
       "Median Price/Square Foot: $" + feature.properties.median_sale_ppsf + "</p><br><p>" +
       "Total Inventory" + feature.properties.inventory + "</p>");
     } // Ends pop-up binding of data 
