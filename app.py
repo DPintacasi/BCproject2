@@ -61,12 +61,12 @@ def redfin_data():
         redfin_list.append(x)
     return jsonify(redfin_list)
 
-@app.route("/data/housing")
-def housing():
-    data = mongo.db.housing_summary.find()
-    json_data = list(data)
-    json_data = json.dumps(json_data, default=json_util.default)
-    return json_data
+# @app.route("/data/housing")
+# def housing():
+#     data = mongo.db.housing_summary.find()
+#     json_data = list(data)
+#     json_data = json.dumps(json_data, default=json_util.default)
+#     return json_data
 
 @app.route("/data/nymap")
 def ny_map_data():   
