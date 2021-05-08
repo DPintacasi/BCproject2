@@ -111,7 +111,6 @@ d3.json("/data/census").then(function(data){
             parents: parents,
             values:  dataSelection,
             textinfo: "label+value+percent parent+percent entry text",
-            // domain: {"x": [0, 0.48]},
             outsidetextfont: {"size": 20, "color": "#377eb8"},
             marker: {"line": {"width": 2},
             colors: ['#d2fbd4','#a5dbc2','#7bbcb0','#559c9e','#3a7c89','#235d72','#0d585f','#123f5a','#d2fbd4','#a5dbc2','#7bbcb0','#559c9e','#3a7c89','#235d72','#0d585f','#123f5a',
@@ -119,8 +118,6 @@ d3.json("/data/census").then(function(data){
             pathbar: {"visible": false}
             }];
         
-            // #d2fbd4,#a5dbc2,#7bbcb0,#559c9e,#3a7c89,#235d72,#123f5a
-            // #e4f1e1,#b4d9cc,#89c0b6,#63a6a0,#448c8a,#287274,#0d585f
         var layout = {
             title: "Homeowners vs Renters - by Race"
         };
