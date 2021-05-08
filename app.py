@@ -24,7 +24,12 @@ def national():
 
 @app.route("/newyork")
 def newyork():
-    return render_template("newyork.html")
+    return render_template("ny_map.html")
+
+#need to delete later will be merge with /newyork
+@app.route("/redfin")
+def redfin():
+    return render_template("redfin.html")
 
 @app.route("/data/census")
 def census():
@@ -47,7 +52,7 @@ def map():
     json_data = json.dumps(json_data, default=json_util.default)
     return json_data
 
-@app.route("/data/housing-summary")
+@app.route("/data/housing")
 def redfin_data(): 
     collection = mongo.db.housing_summary
     redfin_list=[]
@@ -55,6 +60,13 @@ def redfin_data():
     for x in results:
         redfin_list.append(x)
     return jsonify(redfin_list)
+
+@app.route("/data/housing")
+def housing():
+    data = mongo.db.housing_summary.find()
+    json_data = list(data)
+    json_data = json.dumps(json_data, default=json_util.default)
+    return json_data
 
 @app.route("/data/nymap")
 def ny_map_data():   
@@ -66,7 +78,7 @@ def ny_map_data():
     return jsonify(ny_list)
 
 @app.route("/data/redfin")
-def redfin():
+def dataredfin():
     data = mongo.db.redfinclean.find()
     json_data = list(data)
     json_data = json.dumps(json_data, default=json_util.default)
