@@ -24,7 +24,7 @@ d3.json("/data/redfin").then(function(data){
   var trace2 = {
     x: years,
     y: mediansaleprice,
-    // text: redfindata.map(row => row.romanName),
+    yaxis: "y2",
     name: "Median House Price",
     type: "scatter"
   };
@@ -37,6 +37,25 @@ d3.json("/data/redfin").then(function(data){
     title: "Total Homes Sold versus Median Price",
     pattern: "independent"
   };
+
+  var layout = { 
+    title: "fred test",
+    // colorway : ['#f3cec9', '#a262a9', '#6f4d96'],
+    yaxis: {
+        title: trace1.name,
+        titlefont: {color: 'blue'},
+        tickfont: {color: 'blue'}
+      },
+      yaxis2: {
+        title: trace2.name,
+        titlefont: {color: 'orange'},
+        tickfont: {color: 'orange'},
+        // anchor: 'free',
+        overlaying: 'y',
+        side: 'right',
+        // position: 0.15
+      }
+}
   
   // Render the plot to the div tag with id "plot"
   Plotly.newPlot("plot", traceData, layout);
