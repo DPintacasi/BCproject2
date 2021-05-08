@@ -51,6 +51,7 @@ d3.json("/data/nymap").then(function(geoData, err) {
     }
   }).addTo(myMap);
 
+  
   // Set up the legend
   var legend = L.control({ position: "bottomright" });
   legend.onAdd = function() {
