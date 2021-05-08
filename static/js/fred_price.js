@@ -3,7 +3,7 @@ d3.json("/data/fred").then(function(data){
     console.log(data)
     var dataset = data[0]
     console.log(dataset)
-
+    console.log(dataset.date)
     trace_lumber = {
         x : dataset.date,
         y : dataset.lumber_price_index,
@@ -30,8 +30,10 @@ d3.json("/data/fred").then(function(data){
     var plotData = [trace_lumber,trace_homeprice,trace_homeown]
 
     var layout = { 
-        title: "fred test",
+        title: "Homeownership Rate vs Median House Price vs Lumber Price Index",
         colorway : ['#f3cec9', '#a262a9', '#6f4d96'],
+        width: 800,
+        // xaxis: {domain: [0.2, 0.8]},
         yaxis: {
             title: trace_lumber.name,
             titlefont: {color: '#f3cec9'},
@@ -44,7 +46,7 @@ d3.json("/data/fred").then(function(data){
             anchor: 'free',
             overlaying: 'y',
             side: 'left',
-            position: 0.15
+            position: 0.1
           },
           yaxis3: {
             title: trace_homeown.name,

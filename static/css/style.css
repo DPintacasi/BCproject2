@@ -2,22 +2,26 @@
 a.navbar-brand{
     margin-left: 10px;
     padding: 10px;
-    background-color: rgb(0, 0, 255);
+
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
 }
-/* header styling*/
-h3{
-    color: rgb(0, 0, 255);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    padding: 15px;
+
+.my-4{
+    color: rgb(25, 114, 173);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ h3{
+    color: rgb(25, 114, 173);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* image styling*/
 .img-thumbnail{
     padding:10px;
     border: none;
-}
+} */
 
 /* fontstyling for text*/
 p{
@@ -28,13 +32,10 @@ p{
 
 /* body background*/
 body{
-    background-color: rgb(223, 222, 222);
+    background-color: rgb(236, 235, 235);
 }
-.col-md-12{
-    background-color: white;
-    padding-top: 20px;
-    padding-bottom:40px;
-}
+
+    
 
 
 /* navbar styling*/
@@ -61,25 +62,6 @@ body{
 
 .content.bg-white {
     margin-top: 15px;
-}
-
-
-/* table text adjustments*/
-tr>th:nth-child(1),
-tr>th:nth-child(3),
-tr>th:nth-child(6),
-tr>th:nth-child(7),
-tr>th:nth-child(8),
-tr>th:nth-child(9),
-tr>th:nth-child(10),
-tr>td:nth-child(1),
-tr>td:nth-child(3),
-tr>td:nth-child(6),
-tr>td:nth-child(7),
-tr>td:nth-child(8),
-tr>td:nth-child(9),
-tr>td:nth-child(10) {
-    text-align: right;
 }
 
 
