@@ -1,6 +1,6 @@
 // Creating map object
 var myMap = L.map("map", {
-  center: [34.0522, -118.2437],
+  center: [40.7128, -74.0060],
   zoom: 8
 });
 
@@ -18,12 +18,13 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 var geojson;
 
 //read in json data
-d3.json("/ny-map").then(function(geoData, err) {
+d3.json("/data/nymap").then(function(geoData, err) {
   if (err) throw err;
   console.log(geoData)
 
   // Create a new choropleth layer
-  geojson = L.choropleth(geoData, {
+  // geojson = L.choropleth(geoData[0]).addTo(myMap);
+  geojson = L.choropleth(geoData[0], {
 
     // Define what  property in the features to use
     valueProperty: "median_sale_price",
@@ -79,3 +80,9 @@ d3.json("/ny-map").then(function(geoData, err) {
   legend.addTo(myMap);
 
 });
+
+
+// d3.json("https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/new-york-counties.geojson").then(function(data){
+//   geojson = L.choropleth(data,
+//     ).addTo(myMap);
+// });
