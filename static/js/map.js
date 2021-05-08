@@ -44,7 +44,7 @@ d3.json("/data/map").then(function(data, err) {
 
     // Bind a pop-up to each layer
     onEachFeature: function(feature, layer) {
-      layer.bindPopup("<h3>" + feature.properties.state + "</h3><hr><p>" + 
+      layer.bindPopup("<h3>" + feature.properties.name + "</h3><hr><p>" + 
       "Median Sale Price: $" + feature.properties.median_sale_price + "</p><br><p>" + 
       "Median Price/Square Foot: $" + feature.properties.median_sale_ppsf + "</p><br><p>" +
       "Total Inventory" + feature.properties.inventory + "</p>");
