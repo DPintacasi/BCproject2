@@ -37,10 +37,10 @@
                              Analysis Pages
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="history">Historical Analysis</a>
                             <a class="dropdown-item" href="states">State-by-State Breakdown</a>
-                            <a class="dropdown-item" href="national_map">National Map</a>
-                            <a class="dropdown-item" href="new_york">New York</a>
+                            <a class="dropdown-item" href="national">National Map</a>
+                            <a class="dropdown-item" href="redfin">New York Housing Trends</a>
+                            <a class="dropdown-item" href="ny_map.html">New York County Map</a>
                         </div>
                     </li>
                 </ul>
@@ -70,8 +70,9 @@
 
 <div class="container">
     <div class="col-md-12">
+        <br>
     <h3>Federal Reserve Bank Pricing Trend</h3>
-      <div id="fred_prices_trends">
+      <div id="fred_prices_trend">
       </div>
     </div>
   </div>
@@ -89,6 +90,7 @@
     <!-- Our JavaScript-->
     <script src="{{ url_for('static', filename='js/d3.min.js') }}"></script>
 
-    
+    <!-- fred price script-->
+    <script src="{{ url_for('static', filename='js/fred_price.js') }}"></script>
 </body>
 </html>
