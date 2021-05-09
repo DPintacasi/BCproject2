@@ -2,25 +2,13 @@ body {
   padding: 0;
   margin: 0;
 }
-/* .container1{
-  padding-top: 0px;
-  padding-right: 6em;
-  padding-bottom: 1.5em ;
-  margin:auto;
-  margin: top 0px;;
-  margin-right: auto;
-  margin-bottom: 0px;
-  margin-left: auto;
-} */
 
 #map,
 body,
 html {
-  height: 80%;
-  padding:0px;
-  width: 90%; 
+  height: 100%;
+  width: 90%
 }
-
 
 .leaflet-popup-content {
   text-align: center;
@@ -29,7 +17,7 @@ html {
 /* CSS from the Leaflet-Choropleth documentation */
 .legend {
   padding: 6px 8px;
-  font: 10px Arial, Helvetica, sans-serif;
+  font: 12px Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: #555;
   background: #fff;
