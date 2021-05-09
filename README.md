@@ -23,6 +23,8 @@ requires a file called ```config.py``` within the ETL directory containing API k
         census_key = "your census api key"
 
         fred_key = "your fred api key"
+        
+        
 
 
 requires a file called ```config.js``` within the static/js directory containing API key for Mapbox. The config file needs to be of the format: 
